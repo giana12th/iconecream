@@ -15,7 +15,7 @@
 
 ## 技術スタック
 
-Bun / Vite / React / TypeScript
+Bun / Vite / React / TypeScript / Claude Code
 
 ## 開発
 
@@ -29,6 +29,10 @@ bun build
 ## デプロイ
 
 GitHub Actions による GitHub Pages への自動デプロイ（mainブランチへのpush時）
+
+## ブログ
+
+- [Iconecream: ブラウザAPIだけで作るアイコン画像ジェネレーター](blog/iconecream-tech-blog.md)
 
 ## ライセンス
 
