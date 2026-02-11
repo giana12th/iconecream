@@ -52,7 +52,7 @@ export function AdvancedSettings({ size, onSizeChange }: AdvancedSettingsProps) 
           <div style={{ fontSize: 12, color: THEME.textLight, marginBottom: 10 }}>
             画像サイズ
           </div>
-          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
             {SIZE_PRESETS.map((preset) => (
               <button
                 key={preset.value}
