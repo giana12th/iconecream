@@ -106,7 +106,7 @@ src/
 | value    | string                  | 現在の色（hex）                   |
 | onChange | (color: string) => void | 変更コールバック                  |
 
-`<input type="color">` + ラベル + hex値表示。
+カスタムカラースウォッチ（`div` + 非表示 `<input type="color">`）+ ラベル + hex値表示。
 
 ---
 
