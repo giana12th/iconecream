@@ -24,6 +24,7 @@ export function replaceSvgColors(
 
 /** SVG文字列をbase64 data URLに変換 */
 export function svgToDataUrl(svgString: string): string {
-  const base64 = btoa(unescape(encodeURIComponent(svgString)));
+  const bytes = new TextEncoder().encode(svgString);
+  const base64 = btoa(Array.from(bytes, (b) => String.fromCharCode(b)).join(""));
   return `data:image/svg+xml;base64,${base64}`;
 }

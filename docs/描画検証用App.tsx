@@ -38,7 +38,8 @@ function svgToJpgBlob(
 ): Promise<Blob> {
   return new Promise((resolve, reject) => {
     // 1. SVG文字列をbase64エンコード
-    const base64 = btoa(unescape(encodeURIComponent(svgString)));
+    const bytes = new TextEncoder().encode(svgString);
+    const base64 = btoa(Array.from(bytes, (b) => String.fromCharCode(b)).join(""));
     const dataUrl = `data:image/svg+xml;base64,${base64}`;
 
     // 2. Imageオブジェクトにロード

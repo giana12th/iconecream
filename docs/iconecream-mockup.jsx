@@ -47,7 +47,8 @@ function replaceSvgColors(svgString, iceColor, bgColor) {
 }
 
 function svgToDataUrl(svgString) {
-  const base64 = btoa(unescape(encodeURIComponent(svgString)));
+  const bytes = new TextEncoder().encode(svgString);
+  const base64 = btoa(Array.from(bytes, (b) => String.fromCharCode(b)).join(""));
   return `data:image/svg+xml;base64,${base64}`;
 }
 
