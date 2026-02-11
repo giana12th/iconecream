@@ -11,7 +11,7 @@ App
 │   └── ColorPickerItem（背景色）
 ├── DownloadButton
 ├── AdvancedSettings（折りたたみ）
-│   └── SizePresetButton × 4
+│   └── SizePresetButton x 4
 ├── Terms（利用規約）
 └── Footer
 ```
@@ -81,7 +81,7 @@ src/
 | ---------- | ------ | -------------------- |
 | previewUrl | string | 表示するSVG data URL |
 
-280×280px 固定表示。角丸 + シャドウで立体感を出す。ダウンロードサイズとは独立。
+280x280px 固定表示。角丸 + シャドウで立体感を出す。ダウンロードサイズとは独立。
 
 ---
 
@@ -150,9 +150,9 @@ props なし。コピーライト表示。
 ```typescript
 /** SVG文字列内の指定要素の色を置換 */
 function replaceSvgColors(
-    svgString: string,
-    iceColor: string,
-    bgColor: string,
+  svgString: string,
+  iceColor: string,
+  bgColor: string,
 ): string;
 
 /** SVG文字列をbase64 data URLに変換 */
@@ -164,10 +164,10 @@ function svgToDataUrl(svgString: string): string;
 ```typescript
 /** 色置換済みSVG → JPG Blob を Canvas 経由で生成 */
 function svgToJpgBlob(
-    svgString: string,
-    width: number,
-    height: number,
-    quality?: number,
+  svgString: string,
+  width: number,
+  height: number,
+  quality?: number,
 ): Promise<Blob>;
 
 /** Blob をファイルとしてダウンロード */
@@ -182,18 +182,18 @@ function downloadBlob(blob: Blob, filename: string): void;
 
 ```typescript
 const PRESET_COLORS: Array<{ ice: string; bg: string }> = [
-    { ice: "#61b0e2", bg: "#ac75b0" }, // ソーダ×パープル
-    { ice: "#f7b7c5", bg: "#ffe8a3" }, // ストロベリー×レモン
-    { ice: "#a8d8cb", bg: "#f8a4b8" }, // ミント×ピンク
-    { ice: "#f5d76e", bg: "#7ec8e3" }, // マンゴー×スカイ
-    { ice: "#c3aed6", bg: "#ffe5d9" }, // ラベンダー×ピーチ
+  { ice: "#61b0e2", bg: "#ac75b0" }, // ソーダxパープル
+  { ice: "#f7b7c5", bg: "#ffe8a3" }, // ストロベリーxレモン
+  { ice: "#a8d8cb", bg: "#f8a4b8" }, // ミントxピンク
+  { ice: "#f5d76e", bg: "#7ec8e3" }, // マンゴーxスカイ
+  { ice: "#c3aed6", bg: "#ffe5d9" }, // ラベンダーxピーチ
 ];
 
 const SIZE_PRESETS = [
-    { label: "Small", value: 128, desc: "128 × 128 px" },
-    { label: "Default", value: 400, desc: "400 × 400 px" },
-    { label: "Large", value: 800, desc: "800 × 800 px" },
-    { label: "XLarge", value: 1024, desc: "1024 × 1024 px" },
+  { label: "Small", value: 128, desc: "128 x 128 px" },
+  { label: "Default", value: 400, desc: "400 x 400 px" },
+  { label: "Large", value: 800, desc: "800 x 800 px" },
+  { label: "XLarge", value: 1024, desc: "1024 x 1024 px" },
 ];
 ```
 
@@ -201,13 +201,13 @@ const SIZE_PRESETS = [
 
 ```typescript
 const THEME = {
-    bg: "#FFF5F5", // ほんのりピンク
-    main: "#F8A4B8", // ストロベリーピンク
-    accent: "#A8D8CB", // ミントグリーン
-    text: "#5C4B51", // ダークブラウン
-    textLight: "#8a7680", // サブテキスト
-    cardBg: "#ffffff", // カード背景
-    border: "#f0e0e4", // ボーダー
+  bg: "#FFF5F5", // ほんのりピンク
+  main: "#F8A4B8", // ストロベリーピンク
+  accent: "#A8D8CB", // ミントグリーン
+  text: "#5C4B51", // ダークブラウン
+  textLight: "#8a7680", // サブテキスト
+  cardBg: "#ffffff", // カード背景
+  border: "#f0e0e4", // ボーダー
 };
 ```
 
@@ -237,8 +237,8 @@ const THEME = {
 ## スタイリング方針
 
 - CSS-in-JS（inline style）を基本とする
-    - 理由: コンポーネント数が少なく、CSS Modules や styled-components を入れるまでもない
-    - 定数は `theme.ts` に集約して一貫性を保つ
+  - 理由: コンポーネント数が少なく、CSS Modules や styled-components を入れるまでもない
+  - 定数は `theme.ts` に集約して一貫性を保つ
 - レスポンシブ: `maxWidth: 400px` + `margin: 0 auto` でモバイルファースト
 - アニメーション: ホバー・折りたたみのみ最小限の transition
 
@@ -250,10 +250,10 @@ const THEME = {
 
 | #   | 名前                | アイス色  | 背景色    | イメージ              |
 | --- | ------------------- | --------- | --------- | --------------------- |
-| 1   | ソーダ×パープル     | `#61b0e2` | `#ac75b0` | 既存（SVGデフォルト） |
-| 2   | ストロベリー×レモン | `#f7b7c5` | `#ffe8a3` | 甘い暖色系            |
-| 3   | ミント×ピンク       | `#a8d8cb` | `#f8a4b8` | サイトテーマカラー    |
-| 4   | マンゴー×スカイ     | `#f5d76e` | `#7ec8e3` | トロピカル            |
-| 5   | ラベンダー×ピーチ   | `#c3aed6` | `#ffe5d9` | やわらかパステル      |
+| 1   | ソーダxパープル     | `#61b0e2` | `#ac75b0` | 既存（SVGデフォルト） |
+| 2   | ストロベリーxレモン | `#f7b7c5` | `#ffe8a3` | 甘い暖色系            |
+| 3   | ミントxピンク       | `#a8d8cb` | `#f8a4b8` | サイトテーマカラー    |
+| 4   | マンゴーxスカイ     | `#f5d76e` | `#7ec8e3` | トロピカル            |
+| 5   | ラベンダーxピーチ   | `#c3aed6` | `#ffe5d9` | やわらかパステル      |
 
 ※ 実装しながら調整可能。モックアップで実際の見た目を確認推奨。

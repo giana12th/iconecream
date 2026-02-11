@@ -35,25 +35,25 @@
 
 1. リポジトリ作成（public / MIT）完了
 2. Vite + React + TypeScript プロジェクト初期化（Bun使用）完了
-    ```bash
-    bun create vite iconecream --template react-ts
-    ```
+   ```bash
+   bun create vite iconecream --template react-ts
+   ```
 3. ディレクトリ構成の作成
-    ```
-    src/
-    ├── components/
-    ├── utils/
-    ├── constants/
-    ├── assets/
-    ├── App.tsx
-    └── main.tsx
-    ```
+   ```
+   src/
+   ├── components/
+   ├── utils/
+   ├── constants/
+   ├── assets/
+   ├── App.tsx
+   └── main.tsx
+   ```
 4. SVGファイルの配置（`src/assets/icon.svg`）完了
 5. Viteの設定確認（SVG raw import が動くこと）
 6. `index.html` にOGPメタタグを追加
-    - title: `Iconecream`
-    - description: `カラーを選ぶだけ。アイスクリームのアイコン画像メーカー`
-    - OGP画像の配置（`public/ogp.png`）
+   - title: `Iconecream`
+   - description: `カラーを選ぶだけ。アイスクリームのアイコン画像メーカー`
+   - OGP画像の配置（`public/ogp.png`）
 
 **完了条件**: `bun dev` で空のReactアプリが起動する。SVG raw import が動作する。
 
@@ -67,44 +67,44 @@
 
 1. `src/constants/theme.ts` の作成
 
-    ```typescript
-    export const THEME = {
-        bg: "#FFF5F5",
-        main: "#F8A4B8",
-        accent: "#A8D8CB",
-        text: "#5C4B51",
-        textLight: "#8a7680",
-        cardBg: "#ffffff",
-        border: "#f0e0e4",
-    };
-    ```
+   ```typescript
+   export const THEME = {
+     bg: "#FFF5F5",
+     main: "#F8A4B8",
+     accent: "#A8D8CB",
+     text: "#5C4B51",
+     textLight: "#8a7680",
+     cardBg: "#ffffff",
+     border: "#f0e0e4",
+   };
+   ```
 
 2. `src/constants/presets.ts` の作成
 
-    ```typescript
-    export const PRESET_COLORS = [
-        { ice: "#61b0e2", bg: "#ac75b0" },
-        { ice: "#f7b7c5", bg: "#ffe8a3" },
-        { ice: "#a8d8cb", bg: "#f8a4b8" },
-        { ice: "#f5d76e", bg: "#7ec8e3" },
-        { ice: "#c3aed6", bg: "#ffe5d9" },
-    ];
+   ```typescript
+   export const PRESET_COLORS = [
+     { ice: "#61b0e2", bg: "#ac75b0" },
+     { ice: "#f7b7c5", bg: "#ffe8a3" },
+     { ice: "#a8d8cb", bg: "#f8a4b8" },
+     { ice: "#f5d76e", bg: "#7ec8e3" },
+     { ice: "#c3aed6", bg: "#ffe5d9" },
+   ];
 
-    export const SIZE_PRESETS = [
-        { label: "Small", value: 128, desc: "128 × 128 px" },
-        { label: "Default", value: 400, desc: "400 × 400 px" },
-        { label: "Large", value: 800, desc: "800 × 800 px" },
-        { label: "XLarge", value: 1024, desc: "1024 × 1024 px" },
-    ];
-    ```
+   export const SIZE_PRESETS = [
+     { label: "Small", value: 128, desc: "128 x 128 px" },
+     { label: "Default", value: 400, desc: "400 x 400 px" },
+     { label: "Large", value: 800, desc: "800 x 800 px" },
+     { label: "XLarge", value: 1024, desc: "1024 x 1024 px" },
+   ];
+   ```
 
 3. `src/utils/svg.ts` の作成
-    - `replaceSvgColors()`: 検証済みコードを移植
-    - `svgToDataUrl()`: base64 data URL 変換
+   - `replaceSvgColors()`: 検証済みコードを移植
+   - `svgToDataUrl()`: base64 data URL 変換
 
 4. `src/utils/download.ts` の作成
-    - `svgToJpgBlob()`: 検証済みコードを移植
-    - `downloadBlob()`: 検証済みコードを移植
+   - `svgToJpgBlob()`: 検証済みコードを移植
+   - `downloadBlob()`: 検証済みコードを移植
 
 **完了条件**: 各関数が単体で呼び出し可能。型定義が通る。
 
@@ -140,7 +140,7 @@ bun lint
 
 | コンポーネント   | ファイル               | 備考                                 |
 | ---------------- | ---------------------- | ------------------------------------ |
-| ColorPickers     | `ColorPickers.tsx`     | ColorPickerItem × 2 のコンテナ       |
+| ColorPickers     | `ColorPickers.tsx`     | ColorPickerItem x 2 のコンテナ       |
 | AdvancedSettings | `AdvancedSettings.tsx` | 内部 state（`open`）を持つ折りたたみ |
 
 #### Step 3-4: App（ルート）
@@ -164,20 +164,20 @@ bun lint
 **作業内容**:
 
 1. 全体レイアウト
-    - `maxWidth: 400px` + `margin: 0 auto` でセンタリング
-    - `minHeight: 100vh` + `background: THEME.bg`
-    - フォント: `'Helvetica Neue', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif`
+   - `maxWidth: 400px` + `margin: 0 auto` でセンタリング
+   - `minHeight: 100vh` + `background: THEME.bg`
+   - フォント: `'Helvetica Neue', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif`
 
 2. 各コンポーネントのスタイリング
-    - Preview: 280×280px 固定、角丸20px、シャドウ
-    - ColorPickers: カード風（白背景 + border + border-radius）
-    - DownloadButton: グラデーション背景 + ホバーアニメーション
-    - AdvancedSettings: 折りたたみの transition
-    - サイズプリセットボタン: 選択状態をミントグリーンで表示
+   - Preview: 280x280px 固定、角丸20px、シャドウ
+   - ColorPickers: カード風（白背景 + border + border-radius）
+   - DownloadButton: グラデーション背景 + ホバーアニメーション
+   - AdvancedSettings: 折りたたみの transition
+   - サイズプリセットボタン: 選択状態をミントグリーンで表示
 
 3. レスポンシブ確認
-    - iPhone SE（375px）〜 デスクトップで崩れないか
-    - カラーピッカーのタップ領域が十分か（48×48px以上）
+   - iPhone SE（375px）〜 デスクトップで崩れないか
+   - カラーピッカーのタップ領域が十分か（48x48px以上）
 
 **完了条件**: モックアップ（iconecream-mockup.jsx）と同等の見た目になる。デスクトップで問題なし。
 
@@ -191,16 +191,16 @@ bun lint
 
 1. `index.html` の最終調整
 
-    ```html
-    <meta property="og:title" content="Iconecream" />
-    <meta
-        property="og:description"
-        content="カラーを選ぶだけ。アイスクリームのアイコン画像メーカー"
-    />
-    <meta property="og:image" content="/ogp.png" />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    ```
+   ```html
+   <meta property="og:title" content="Iconecream" />
+   <meta
+     property="og:description"
+     content="カラーを選ぶだけ。アイスクリームのアイコン画像メーカー"
+   />
+   <meta property="og:image" content="/ogp.png" />
+   <meta property="og:type" content="website" />
+   <meta name="twitter:card" content="summary_large_image" />
+   ```
 
 2. favicon の設定
    public/favicon.svgを使用
@@ -210,18 +210,18 @@ bun lint
 
 4. Vite の `base` 設定（GitHub Pages用）
 
-    ```typescript
-    // vite.config.ts
-    export default defineConfig({
-        base: "/iconecream/", // リポジトリ名に合わせる
-        plugins: [react()],
-    });
-    ```
+   ```typescript
+   // vite.config.ts
+   export default defineConfig({
+     base: "/iconecream/", // リポジトリ名に合わせる
+     plugins: [react()],
+   });
+   ```
 
 5. デプロイ後の確認
-    - OGP表示確認（SNSデバッガー等）
-    - ダウンロード動作確認（PC / iOS / Android）
-    - プレビュー表示確認
+   - OGP表示確認（SNSデバッガー等）
+   - ダウンロード動作確認（PC / iOS / Android）
+   - プレビュー表示確認
 
 **完了条件**: GitHub Pages で公開され、全機能が本番環境で動作する。
 

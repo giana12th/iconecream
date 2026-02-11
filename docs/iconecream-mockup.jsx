@@ -2,18 +2,18 @@ import { useState, useRef, useCallback, useEffect, useMemo } from "react";
 
 // ─── Constants ───────────────────────────────────────────
 const PRESET_COLORS = [
-  { ice: "#61b0e2", bg: "#ac75b0" }, // ソーダ×パープル
-  { ice: "#f7b7c5", bg: "#ffe8a3" }, // ストロベリー×レモン
-  { ice: "#a8d8cb", bg: "#f8a4b8" }, // ミント×ピンク
-  { ice: "#f5d76e", bg: "#7ec8e3" }, // マンゴー×スカイ
-  { ice: "#c3aed6", bg: "#ffe5d9" }, // ラベンダー×ピーチ
+  { ice: "#61b0e2", bg: "#ac75b0" }, // ソーダxパープル
+  { ice: "#f7b7c5", bg: "#ffe8a3" }, // ストロベリーxレモン
+  { ice: "#a8d8cb", bg: "#f8a4b8" }, // ミントxピンク
+  { ice: "#f5d76e", bg: "#7ec8e3" }, // マンゴーxスカイ
+  { ice: "#c3aed6", bg: "#ffe5d9" }, // ラベンダーxピーチ
 ];
 
 const SIZE_PRESETS = [
-  { label: "Small", value: 128, desc: "128 × 128 px" },
-  { label: "Default", value: 400, desc: "400 × 400 px" },
-  { label: "Large", value: 800, desc: "800 × 800 px" },
-  { label: "XLarge", value: 1024, desc: "1024 × 1024 px" },
+  { label: "Small", value: 128, desc: "128 x 128 px" },
+  { label: "Default", value: 400, desc: "400 x 400 px" },
+  { label: "Large", value: 800, desc: "800 x 800 px" },
+  { label: "XLarge", value: 1024, desc: "1024 x 1024 px" },
 ];
 
 const THEME = {
@@ -56,19 +56,24 @@ function svgToDataUrl(svgString) {
 /** プレビュー表示 */
 function Preview({ previewUrl }) {
   return (
-    <div style={{
-      display: "flex",
-      justifyContent: "center",
-      marginBottom: 28,
-    }}>
-      <div style={{
-        width: 280,
-        height: 280,
-        borderRadius: 20,
-        overflow: "hidden",
-        boxShadow: "0 8px 32px rgba(92,75,81,0.12), 0 2px 8px rgba(92,75,81,0.08)",
-        transition: "box-shadow 0.3s ease",
-      }}>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        marginBottom: 28,
+      }}
+    >
+      <div
+        style={{
+          width: 280,
+          height: 280,
+          borderRadius: 20,
+          overflow: "hidden",
+          boxShadow:
+            "0 8px 32px rgba(92,75,81,0.12), 0 2px 8px rgba(92,75,81,0.08)",
+          transition: "box-shadow 0.3s ease",
+        }}
+      >
         {previewUrl && (
           <img
             src={previewUrl}
@@ -84,12 +89,14 @@ function Preview({ previewUrl }) {
 /** カラーピッカー（1つ分） */
 function ColorPickerItem({ label, value, onChange }) {
   return (
-    <div style={{
-      display: "flex",
-      alignItems: "center",
-      gap: 12,
-      flex: 1,
-    }}>
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: 12,
+        flex: 1,
+      }}
+    >
       <div style={{ position: "relative" }}>
         <input
           type="color"
@@ -105,45 +112,70 @@ function ColorPickerItem({ label, value, onChange }) {
             background: "none",
           }}
         />
-        <div style={{
-          position: "absolute",
-          inset: 0,
-          borderRadius: 12,
-          border: `2px solid ${THEME.border}`,
-          pointerEvents: "none",
-        }} />
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            borderRadius: 12,
+            border: `2px solid ${THEME.border}`,
+            pointerEvents: "none",
+          }}
+        />
       </div>
       <div>
-        <div style={{
-          fontSize: 13,
-          fontWeight: 600,
-          color: THEME.text,
-          marginBottom: 2,
-        }}>{label}</div>
-        <div style={{
-          fontSize: 12,
-          color: THEME.textLight,
-          fontFamily: "'Courier New', monospace",
-        }}>{value.toUpperCase()}</div>
+        <div
+          style={{
+            fontSize: 13,
+            fontWeight: 600,
+            color: THEME.text,
+            marginBottom: 2,
+          }}
+        >
+          {label}
+        </div>
+        <div
+          style={{
+            fontSize: 12,
+            color: THEME.textLight,
+            fontFamily: "'Courier New', monospace",
+          }}
+        >
+          {value.toUpperCase()}
+        </div>
       </div>
     </div>
   );
 }
 
 /** カラーピッカーセクション */
-function ColorPickers({ iceColor, bgColor, onIceColorChange, onBgColorChange }) {
+function ColorPickers({
+  iceColor,
+  bgColor,
+  onIceColorChange,
+  onBgColorChange,
+}) {
   return (
-    <div style={{
-      display: "flex",
-      gap: 16,
-      marginBottom: 24,
-      padding: "16px 20px",
-      background: THEME.cardBg,
-      borderRadius: 16,
-      border: `1px solid ${THEME.border}`,
-    }}>
-      <ColorPickerItem label="アイスの色" value={iceColor} onChange={onIceColorChange} />
-      <ColorPickerItem label="背景色" value={bgColor} onChange={onBgColorChange} />
+    <div
+      style={{
+        display: "flex",
+        gap: 16,
+        marginBottom: 24,
+        padding: "16px 20px",
+        background: THEME.cardBg,
+        borderRadius: 16,
+        border: `1px solid ${THEME.border}`,
+      }}
+    >
+      <ColorPickerItem
+        label="アイスの色"
+        value={iceColor}
+        onChange={onIceColorChange}
+      />
+      <ColorPickerItem
+        label="背景色"
+        value={bgColor}
+        onChange={onBgColorChange}
+      />
     </div>
   );
 }
@@ -186,13 +218,15 @@ function DownloadButton({ onClick }) {
 function AdvancedSettings({ size, onSizeChange }) {
   const [open, setOpen] = useState(false);
   return (
-    <div style={{
-      marginBottom: 20,
-      borderRadius: 14,
-      border: `1px solid ${THEME.border}`,
-      overflow: "hidden",
-      background: THEME.cardBg,
-    }}>
+    <div
+      style={{
+        marginBottom: 20,
+        borderRadius: 14,
+        border: `1px solid ${THEME.border}`,
+        overflow: "hidden",
+        background: THEME.cardBg,
+      }}
+    >
       <button
         onClick={() => setOpen(!open)}
         style={{
@@ -210,19 +244,27 @@ function AdvancedSettings({ size, onSizeChange }) {
         }}
       >
         <span>詳細設定</span>
-        <span style={{
-          transform: open ? "rotate(180deg)" : "rotate(0deg)",
-          transition: "transform 0.2s ease",
-          fontSize: 11,
-        }}>▼</span>
+        <span
+          style={{
+            transform: open ? "rotate(180deg)" : "rotate(0deg)",
+            transition: "transform 0.2s ease",
+            fontSize: 11,
+          }}
+        >
+          ▼
+        </span>
       </button>
       {open && (
         <div style={{ padding: "0 20px 16px" }}>
-          <div style={{
-            fontSize: 12,
-            color: THEME.textLight,
-            marginBottom: 10,
-          }}>画像サイズ</div>
+          <div
+            style={{
+              fontSize: 12,
+              color: THEME.textLight,
+              marginBottom: 10,
+            }}
+          >
+            画像サイズ
+          </div>
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
             {SIZE_PRESETS.map((preset) => (
               <button
@@ -233,7 +275,8 @@ function AdvancedSettings({ size, onSizeChange }) {
                   fontSize: 12,
                   fontWeight: size === preset.value ? 700 : 500,
                   color: size === preset.value ? "#fff" : THEME.text,
-                  background: size === preset.value ? THEME.accent : "transparent",
+                  background:
+                    size === preset.value ? THEME.accent : "transparent",
                   border: `1.5px solid ${size === preset.value ? THEME.accent : THEME.border}`,
                   borderRadius: 10,
                   cursor: "pointer",
@@ -241,12 +284,16 @@ function AdvancedSettings({ size, onSizeChange }) {
                 }}
               >
                 {preset.label}
-                <span style={{
-                  display: "block",
-                  fontSize: 10,
-                  opacity: 0.7,
-                  marginTop: 2,
-                }}>{preset.desc}</span>
+                <span
+                  style={{
+                    display: "block",
+                    fontSize: 10,
+                    opacity: 0.7,
+                    marginTop: 2,
+                  }}
+                >
+                  {preset.desc}
+                </span>
               </button>
             ))}
           </div>
@@ -259,14 +306,16 @@ function AdvancedSettings({ size, onSizeChange }) {
 /** 利用規約 */
 function Terms() {
   return (
-    <div style={{
-      padding: "12px 16px",
-      fontSize: 11,
-      color: THEME.textLight,
-      lineHeight: 1.7,
-      borderTop: `1px solid ${THEME.border}`,
-      marginBottom: 12,
-    }}>
+    <div
+      style={{
+        padding: "12px 16px",
+        fontSize: 11,
+        color: THEME.textLight,
+        lineHeight: 1.7,
+        borderTop: `1px solid ${THEME.border}`,
+        marginBottom: 12,
+      }}
+    >
       <span style={{ fontWeight: 600, color: THEME.text }}>ご利用について</span>
       ：アイコン画像としてご自由にお使いいただけます。画像素材としての販売はご遠慮ください。
     </div>
@@ -276,12 +325,14 @@ function Terms() {
 /** フッター */
 function Footer() {
   return (
-    <footer style={{
-      textAlign: "center",
-      padding: "12px 0 24px",
-      fontSize: 11,
-      color: THEME.textLight,
-    }}>
+    <footer
+      style={{
+        textAlign: "center",
+        padding: "12px 0 24px",
+        fontSize: 11,
+        color: THEME.textLight,
+      }}
+    >
       © 2025 Iconecream
     </footer>
   );
@@ -292,7 +343,7 @@ export default function App() {
   // プリセットからランダムに初期色を選択
   const initialPreset = useMemo(
     () => PRESET_COLORS[Math.floor(Math.random() * PRESET_COLORS.length)],
-    []
+    [],
   );
   const [iceColor, setIceColor] = useState(initialPreset.ice);
   const [bgColor, setBgColor] = useState(initialPreset.bg);
@@ -307,42 +358,53 @@ export default function App() {
 
   // ダウンロード（モックアップでは alert で代替）
   const handleDownload = useCallback(() => {
-    alert(`ダウンロード: ${size} × ${size} px の JPG を生成します`);
+    alert(`ダウンロード: ${size} x ${size} px の JPG を生成します`);
   }, [size]);
 
   return (
-    <div style={{
-      minHeight: "100vh",
-      background: THEME.bg,
-      fontFamily: "'Helvetica Neue', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif",
-      color: THEME.text,
-    }}>
-      <div style={{
-        maxWidth: 400,
-        margin: "0 auto",
-        padding: "40px 20px 0",
-      }}>
+    <div
+      style={{
+        minHeight: "100vh",
+        background: THEME.bg,
+        fontFamily:
+          "'Helvetica Neue', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif",
+        color: THEME.text,
+      }}
+    >
+      <div
+        style={{
+          maxWidth: 400,
+          margin: "0 auto",
+          padding: "40px 20px 0",
+        }}
+      >
         {/* ヘッダー（タイトル） */}
-        <div style={{
-          textAlign: "center",
-          marginBottom: 28,
-        }}>
-          <h1 style={{
-            fontSize: 26,
-            fontWeight: 800,
-            margin: 0,
-            letterSpacing: "-0.02em",
-            background: `linear-gradient(135deg, ${THEME.main}, #d4789a)`,
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-          }}>
+        <div
+          style={{
+            textAlign: "center",
+            marginBottom: 28,
+          }}
+        >
+          <h1
+            style={{
+              fontSize: 26,
+              fontWeight: 800,
+              margin: 0,
+              letterSpacing: "-0.02em",
+              background: `linear-gradient(135deg, ${THEME.main}, #d4789a)`,
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
+          >
             Iconecream
           </h1>
-          <p style={{
-            fontSize: 12,
-            color: THEME.textLight,
-            margin: "6px 0 0",
-          }}>
+          <p
+            style={{
+              fontSize: 12,
+              color: THEME.textLight,
+              margin: "6px 0 0",
+            }}
+          >
             カラーを選ぶだけ。アイスクリームのアイコン画像メーカー
           </p>
         </div>
