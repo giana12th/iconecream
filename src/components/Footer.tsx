@@ -10,7 +10,7 @@ export function Footer() {
         color: THEME.textLight,
       }}
     >
-      &copy; 2025 Iconecream
+      &copy; 2026 Iconecream
     </footer>
   );
 }
