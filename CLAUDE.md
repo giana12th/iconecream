@@ -14,6 +14,32 @@
 
 bun vite react  
 github pagesで公開
+CSSファイルなしのインラインスタイル
+
+## ファイル構成
+
+```
+src/
+├── App.tsx                  # ルート：状態管理・レイアウト
+├── components/
+│   ├── Header.tsx           # タイトル・説明
+│   ├── Preview.tsx          # プレビュー画像表示
+│   ├── ColorPickers.tsx     # カラーピッカー2つのコンテナ
+│   ├── ColorPickerItem.tsx  # カラーピッカー1つ分
+│   ├── DownloadButton.tsx   # ダウンロードボタン
+│   ├── AdvancedSettings.tsx # 折りたたみ設定パネル
+│   ├── Terms.tsx            # 利用規約
+│   └── Footer.tsx           # フッター
+├── utils/
+│   ├── svg.ts               # replaceSvgColors, svgToDataUrl
+│   └── download.ts          # svgToJpgBlob, downloadBlob
+├── constants/
+│   ├── presets.ts           # PRESET_COLORS, SIZE_PRESETS
+│   └── theme.ts             # THEME カラー定数
+├── assets/
+│   └── icon.svg             # アイスクリームSVG
+└── main.tsx                 # エントリーポイント
+```
 
 ## command
 
@@ -23,6 +49,12 @@ bun dev
 ```
 
 Claude Codeはプロジェクトのルートディレクトリで起動しています。cdによる実行ディレクトリの変更は不要です。
+
+```sh
+# BAD COMMAND
+cd /d D:\workspace\iconecream && bun lint
+# cd: too many arguments
+```
 
 ## docs
 
