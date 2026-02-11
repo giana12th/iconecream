@@ -33,8 +33,8 @@
 
 **作業内容**:
 
-1. リポジトリ作成（public / MIT）
-2. Vite + React + TypeScript プロジェクト初期化（Bun使用）
+1. リポジトリ作成（public / MIT）完了
+2. Vite + React + TypeScript プロジェクト初期化（Bun使用）完了
     ```bash
     bun create vite iconecream --template react-ts
     ```
@@ -48,14 +48,14 @@
     ├── App.tsx
     └── main.tsx
     ```
-4. SVGファイルの配置（`src/assets/icon.svg`）
+4. SVGファイルの配置（`src/assets/icon.svg`）完了
 5. Viteの設定確認（SVG raw import が動くこと）
 6. `index.html` にOGPメタタグを追加
     - title: `Iconecream`
     - description: `カラーを選ぶだけ。アイスクリームのアイコン画像メーカー`
     - OGP画像の配置（`public/ogp.png`）
 
-**完了条件**: `bun run dev` で空のReactアプリが起動する。SVG raw import が動作する。
+**完了条件**: `bun dev` で空のReactアプリが起動する。SVG raw import が動作する。
 
 ---
 
@@ -107,6 +107,10 @@
     - `downloadBlob()`: 検証済みコードを移植
 
 **完了条件**: 各関数が単体で呼び出し可能。型定義が通る。
+
+```sh
+bun lint
+```
 
 ---
 
@@ -175,7 +179,7 @@
     - iPhone SE（375px）〜 デスクトップで崩れないか
     - カラーピッカーのタップ領域が十分か（48×48px以上）
 
-**完了条件**: モックアップ（iconecream-mockup.jsx）と同等の見た目になる。モバイル・デスクトップで問題なし。
+**完了条件**: モックアップ（iconecream-mockup.jsx）と同等の見た目になる。デスクトップで問題なし。
 
 ---
 
@@ -199,32 +203,10 @@
     ```
 
 2. favicon の設定
+   public/favicon.svgを使用
 
 3. GitHub Actions ワークフロー作成
-
-    ```yaml
-    # .github/workflows/deploy.yml
-    name: Deploy to GitHub Pages
-    on:
-        push:
-            branches: [main]
-    jobs:
-        deploy:
-            runs-on: ubuntu-latest
-            permissions:
-                contents: read
-                pages: write
-                id-token: write
-            steps:
-                - uses: actions/checkout@v4
-                - uses: oven-sh/setup-bun@v2
-                - run: bun install
-                - run: bun run build
-                - uses: actions/upload-pages-artifact@v3
-                  with:
-                      path: dist
-                - uses: actions/deploy-pages@v4
-    ```
+   設定済み
 
 4. Vite の `base` 設定（GitHub Pages用）
 
